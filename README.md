@@ -37,6 +37,15 @@ Then, in your views, do something like this:
                       :description => @photo.description,
                       :url => photo_url(@photo) %>
 
+The button defaults to the horizontal layout, to specify an alternative version just pass through `count_layout` like so:
+
+    <%= pin_it_button :media => image_url(@photo.url),
+                      :description => @photo.description,
+                      :url => photo_url(@photo),
+                      :count_layout => 'vertical' %>
+
+The current available options are `vertical` `horizontal` and `none`
+
 ### Rails > 3.1 
 
 After adding the gem to your Rails app and running the bundle command,
