@@ -18,7 +18,7 @@ module PinIt
     end
     
     def pin_it_js
-      IO.read(File.expand_path("../../vendor/assets/javascripts/pin_it.js", __FILE__))
+      @pin_it_js ||= IO.read(File.expand_path("../../vendor/assets/javascripts/pin_it.js", __FILE__))
     end
   end
 

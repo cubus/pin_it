@@ -1,22 +1,22 @@
-(function() {
-  window.PinIt = window.PinIt || { loaded:false };
-  if (window.PinIt.loaded) return;
-  window.PinIt.loaded = true;
-  function async_load(){
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.async = true;
-    if (window.location.protocol == "https:")
-      s.src = "https://assets.pinterest.com/js/pinit.js";
-    else
-      s.src = "http://assets.pinterest.com/js/pinit.js";
-
-    var x = document.getElementsByTagName("script")[0];
-    x.parentNode.insertBefore(s, x);
-  }
-  if (window.attachEvent)
-    window.attachEvent("onload", async_load);
-  else
-    window.addEventListener("load", async_load, false);
-})();
-
+(function (w, d, load) {
+ var script, 
+ first = d.getElementsByTagName('SCRIPT')[0],  
+ n = load.length, 
+ i = 0,
+ go = function () {
+   for (i = 0; i < n; i = i + 1) {
+     script = d.createElement('SCRIPT');
+     script.type = 'text/javascript';
+     script.async = true;
+     script.src = load[i];
+     first.parentNode.insertBefore(script, first);
+   }
+ }
+ if (w.attachEvent) {
+   w.attachEvent('onload', go);
+ } else {
+   w.addEventListener('load', go, false);
+ }
+}(window, document, 
+ ['//assets.pinterest.com/js/pinit.js']
+));    
